@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "expo-overview",
+    "name": "Expo Overview",
     "slug": "expo-overview",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -25,6 +25,10 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "scheme": "expo-overview"
   }
 }
