@@ -1,12 +1,13 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
-import { router, usePathname } from "expo-router";
+import { DrawerActions } from "@react-navigation/native";
+import { router, useNavigation, usePathname } from "expo-router";
 import { Drawer } from "expo-router/drawer";
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
-
 const DrawerContent = (props) => {
   const pathname = usePathname();
+  const navigation = useNavigation();
 
   return (
     <DrawerContentScrollView {...props}>
@@ -28,7 +29,7 @@ const DrawerContent = (props) => {
         labelStyle={[styles.navItemLabel, { color: pathname == "/" ? "#fff" : "#000" }]}
         style={[styles.navItem, { backgroundColor: pathname == "/" ? "#333" : "#fff" }]}
         onPress={() => {
-          router.push("/(main)/(settings)");
+          router.push("/(main)/settings");
         }}
       />
       <DrawerItem
@@ -39,7 +40,7 @@ const DrawerContent = (props) => {
         labelStyle={[styles.navItemLabel, { color: pathname == "/contact" ? "#fff" : "#000" }]}
         style={[styles.navItem, { backgroundColor: pathname == "/contact" ? "#333" : "#fff" }]}
         onPress={() => {
-          router.push("/(main)/(settings)/contact");
+          router.push("/(main)/settings/contact");
         }}
       />
       <DrawerItem
@@ -50,7 +51,19 @@ const DrawerContent = (props) => {
         labelStyle={[styles.navItemLabel, { color: pathname == "/support" ? "#fff" : "#000" }]}
         style={[styles.navItem, { backgroundColor: pathname == "/support" ? "#333" : "#fff" }]}
         onPress={() => {
-          router.push("/(main)/(settings)/support");
+          router.push("/(main)/settings/support");
+        }}
+      />
+      <DrawerItem
+        icon={({ color, size }) => (
+          <FontAwesome name="info-circle" size={size} color={pathname == "/support" ? "#fff" : "#000"} />
+        )}
+        label={"About"}
+        labelStyle={[styles.navItemLabel, { color: pathname == "/support" ? "#fff" : "#000" }]}
+        style={[styles.navItem, { backgroundColor: pathname == "/support" ? "#333" : "#fff" }]}
+        onPress={() => {
+          navigation.dispatch(DrawerActions.closeDrawer());
+          router.push("/about");
         }}
       />
     </DrawerContentScrollView>
@@ -58,7 +71,28 @@ const DrawerContent = (props) => {
 };
 
 const _layout = () => {
-  return <Drawer drawerContent={(props) => <DrawerContent {...props} />}></Drawer>;
+  return (
+    <Drawer drawerContent={(props) => <DrawerContent {...props} />}>
+      <Drawer.Screen
+        name="index"
+        options={{
+          title: "Settings",
+        }}
+      />
+      <Drawer.Screen
+        name="contact"
+        options={{
+          title: "Contact",
+        }}
+      />
+      <Drawer.Screen
+        name="support"
+        options={{
+          title: "Support",
+        }}
+      />
+    </Drawer>
+  );
 };
 
 export default _layout;

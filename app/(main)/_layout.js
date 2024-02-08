@@ -30,7 +30,7 @@ const _layout = () => {
         }}
       />
       <Tabs.Screen
-        name="(profile)"
+        name="profile"
         options={{
           tabBarIcon: ({ color, size }) => <FontAwesome name="user" size={size} color={color} />,
           title: "Profile",
@@ -38,7 +38,7 @@ const _layout = () => {
         }}
       />
       <Tabs.Screen
-        name="(settings)"
+        name="settings"
         options={{
           tabBarIcon: ({ color, size }) => <FontAwesome name="cog" size={size} color={color} />,
           title: "Settings",
