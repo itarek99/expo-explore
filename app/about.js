@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 const About = () => {
   return (
     <View style={styles.container}>
-      <Text>About</Text>
+      <Text>About Page</Text>
     </View>
   );
 };

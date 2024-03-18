@@ -21,7 +21,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.tarek161803.expooverview"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -29,6 +30,14 @@
     "plugins": [
       "expo-router"
     ],
-    "scheme": "expo-overview"
+    "scheme": "expo-overview",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "63a887a2-650c-4fdd-8c73-322516fce21d"
+      }
+    }
   }
 }
